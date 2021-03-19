@@ -13,6 +13,13 @@ app.use(bodyParser.json())
 
 app.get("/users", async (req, res)=>{
 
+    if (!req.query.age){
+        const user = await User.find();
+        return res.status(200).json({
+        data: user,
+        });
+     }
+
     const user = await User.find({age:req.query.age});
 
     if(user.length == 0){
@@ -55,7 +62,7 @@ app.post("/users", async (req, res)=>{
     // condição < 11
     let elf = 11;
 
-    if((String(req.body.cell).length) > elf) {
+    if((String(req.body.cell).length) != elf) {
         return res.status(400).json({"Error":"Número de celular de tamanho maior que 11."});        
     }
     // 
@@ -85,7 +92,7 @@ app.patch("/users/:id", async(req, res)=>{
     //condição < 11
     let elf = 11;
 
-    if((String(req.body.cell).length) > elf) {
+    if((String(req.body.cell).length) != elf) {
         return res.status(400).json({"Error":"Número de celular de tamanho maior que 11."});        
     }
     //
@@ -106,5 +113,3 @@ app.delete("/users/:id", async (req, res)=>{
 app.listen(3000, ()=>{
     console.log("Server Started");
 });
-
-
