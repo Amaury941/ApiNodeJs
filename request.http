@@ -1,3 +1,40 @@
+####################################################################################################################################################################
+
+###
+GET http://localhost:3000/users HTTP/1.1
+content-type: application/json
+
+###
+GET http://localhost:3000/users/604967b48950f35ed853fc62 HTTP/1.1
+content-type: application/json
+
+###
+POST http://localhost:3000/users HTTP/1.1
+content-type: application/json
+
+{
+    "name":"Aliny",
+    "cpf": "243423",
+    "age": 21,
+    "cell":12345678901
+}
+
+###
+PATCH http://localhost:3000/users/604967b48950f35ed853fc64 HTTP/1.1
+content-type: application/json
+
+{
+    "name":"Carlos"
+}
+
+###
+DELETE  http://localhost:3000/users/604967b48950f35ed853fc65 HTTP/1.1
+content-type: application/json
+
+####################################################################################################################################################################
+
+modelos de requisição.
+
 ### GET por idade
 GET http://localhost:3000/users/?age=insira_número_da_idade HTTP/1.1
 content-type: application/json
